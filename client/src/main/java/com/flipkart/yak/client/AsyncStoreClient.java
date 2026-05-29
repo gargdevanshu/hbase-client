@@ -145,10 +145,6 @@ public interface AsyncStoreClient {
    * the put is applied only if its check passes. Index entries are written per-row only when the
    * CAS for that row succeeds, preventing orphaned index entries on check failure.
    *
-   * <p>This method is intended for use by the pipelined master/slave store and is exposed on this
-   * interface to allow dispatch via reflection in {@code runBatchClientOperation}, consistent with
-   * how other batch operations (put, delete, get) are dispatched.
-   *
    * @param dataList The list of {@link CheckAndStoreData} describing what to check and put per row.
    *                 All rows must belong to the same table.
    * @return A positionally-aligned {@link List} of {@link CompletableFuture}{@code <Boolean>};
